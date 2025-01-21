@@ -16,41 +16,7 @@ body {
     flex-direction: column;
     color: #fff;
     padding: 20px;
-}
-
-@keyframes rotateBg {
-    0% {
-        background-color: #3b003b;
-        transform: scale(1);
-    }
-    25% {
-        background-color: #5e004e;
-        transform: scale(1.02);
-    }
-    50% {
-        background-color: #4b00b7;
-        transform: scale(1.05);
-    }
-    75% {
-        background-color: #2f00a4;
-        transform: scale(1.02);
-    }
-    100% {
-        background-color: #7f00ff;
-        transform: scale(1);
-    }
-}
-
-@keyframes animateBackground {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
+    transition: background 1s ease-in-out;
 }
 
 .blur-background {
@@ -59,144 +25,102 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
     z-index: -1;
-    animation: rotateBg 12s infinite alternate ease-in-out, animateBackground 20s linear infinite;
+    animation: rotateBg 20s infinite alternate ease-in-out, animateBackground 30s linear infinite;
+}
+
+@keyframes rotateBg {
+    0% { background-color: #3b003b; }
+    25% { background-color: #5e004e; }
+    50% { background-color: #4b00b7; }
+    75% { background-color: #2f00a4; }
+    100% { background-color: #7f00ff; }
+}
+
+@keyframes animateBackground {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 .prompt {
     text-align: center;
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.75);
     border-radius: 20px;
     color: #fff;
     width: 90%;
     max-width: 600px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 2.5s ease-out;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 1.5s ease-out;
     transition: all 0.3s ease;
 }
 
 .title {
-    font-size: 3em;
-    font-weight: 600;
+    font-size: 3.2em;
+    font-weight: 700;
     margin-bottom: 15px;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(66, 245, 144, 0.8);
-    animation: glow 4s infinite alternate ease-in-out, pulseGlow 1.5s infinite alternate ease-in-out;
+    letter-spacing: 5px;
     text-align: center;
-}
-
-@keyframes glow {
-    0% {
-        text-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 25px rgba(66, 245, 144, 0.6);
-    }
-    100% {
-        text-shadow: 0 0 30px rgba(66, 245, 144, 1), 0 0 50px rgba(66, 245, 144, 1);
-    }
-}
-
-@keyframes pulseGlow {
-    0% {
-        text-shadow: 0 0 25px rgba(66, 245, 144, 0.7), 0 0 50px rgba(66, 245, 144, 1);
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(66, 245, 144, 1), 0 0 40px rgba(66, 245, 144, 0.7);
-    }
-    100% {
-        text-shadow: 0 0 25px rgba(66, 245, 144, 0.7), 0 0 50px rgba(66, 245, 144, 1);
-    }
-}
-
-.description {
-    font-size: 1.2em;
-    margin-bottom: 25px;
-    padding-top: 15px;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.8;
-    opacity: 0;
-    animation: fadeDescription 2.5s ease-out forwards 1s;
-}
-
-@keyframes fadeDescription {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    transition: transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(66, 245, 144, 0.8), 0 0 20px rgba(66, 245, 144, 0.9);
 }
 
 .buttons-container {
     display: flex;
     justify-content: center;
     gap: 30px;
-    animation: buttonContainerSlide 1.5s ease-out forwards 2s;
+    animation: buttonContainerSlide 1.5s ease-out forwards 1.5s;
 }
 
-.btn-left, .btn-right, .btn-get-key {
+.btn-left, .btn-right {
     padding: 16px 36px;
     font-size: 18px;
     font-weight: 500;
-    border: none;
+    border: 2px solid transparent;
     cursor: pointer;
     border-radius: 50px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.2s ease;
     text-align: center;
     width: 220px;
     color: #fff;
     background-color: #6e2bff;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    outline: none;
 }
 
-.btn-left:hover, .btn-right:hover, .btn-get-key:hover {
+.btn-left:hover, .btn-right:hover {
     background-color: #ad5bff;
-    transform: scale(1.1) rotate(-3deg);
+    transform: scale(1.05);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-}
-
-.btn-left:active, .btn-right:active, .btn-get-key:active {
-    transform: scale(0.98) rotate(0deg);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.btn-get-key {
-    background-color: #ff7043;
-}
-
-.btn-get-key:hover {
-    background-color: #ff9d6b;
+    border-color: #ad5bff;
 }
 
 @media (max-width: 768px) {
     .prompt {
         width: 85%;
         max-width: 400px;
+        padding: 30px;
     }
 
     .title {
-        font-size: 2.5em;
+        font-size: 2.8em;
     }
 
     .description {
         font-size: 1.1em;
     }
 
-    .btn-left, .btn-right, .btn-get-key {
+    .btn-left, .btn-right {
         width: 180px;
         font-size: 17px;
     }
@@ -204,16 +128,30 @@ body {
 
 @media (max-width: 480px) {
     .title {
-        font-size: 2.2em;
+        font-size: 2.4em;
     }
 
     .description {
         font-size: 1em;
     }
 
-    .btn-left, .btn-right, .btn-get-key {
+    .btn-left, .btn-right {
         width: 160px;
         font-size: 15px;
+    }
+
+    .prompt {
+        padding: 20px;
+    }
+
+    .status-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .status-dot {
+        margin-right: 0;
+        margin-bottom: 5px;
     }
 }
 
@@ -225,34 +163,19 @@ body {
 }
 
 .status-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     margin-right: 10px;
-    animation: pulseDot 2s infinite ease-in-out;
-}
-
-@keyframes pulseDot {
-    0% {
-        transform: scale(1);
-        background-color: #ff7043;
-    }
-    50% {
-        transform: scale(1.2);
-        background-color: #ff9d6b;
-    }
-    100% {
-        transform: scale(1);
-        background-color: #ff7043;
-    }
+    transition: background 0.3s ease;
 }
 
 .online {
-    background-color: green;
+    background-color: #4caf50;
 }
 
 .offline {
-    background-color: red;
+    background-color: #f44336;
 }
 
 #statusText {
